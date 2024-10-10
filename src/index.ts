@@ -55,7 +55,7 @@ app.get("/init", async (c) => {
     json.push(...jsonResponse);
     await c.env.INDEXER_QUEUE.sendBatch(
       json.map((item) => ({ body: JSON.stringify(item) })),
-      { delaySeconds: 2 }
+      { delaySeconds: 1 }
     );
     console.log("Sent batch of " + json.length + " items");
     offset += limit;
